@@ -1,0 +1,19 @@
+@import "../../../scss/abstract/colorPalette";
+
+.name-styling {
+    background-color: black;
+    padding: 0.25rem 0.5rem;
+    height: 100%;
+    max-height: 35px;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.pokemon-card {
+    width: 150px;
+    height: 180px;
+    background-color: getColor(white-smoke);
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

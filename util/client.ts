@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Router from 'next/router';
 
 let localStorageToken: string | null = '';
 
@@ -12,10 +11,6 @@ const client = axios.create({
 
   timeout: 100 * 1000,
 
-  // headers: {
-  //   'Content-type': 'application/json',
-  //   Authorization: `Bearer ${localStorageToken}`,
-  // },
   withCredentials: false,
 });
 

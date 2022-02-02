@@ -5,7 +5,7 @@ export interface IPokemonALLData {
 
 export interface IPokemonData {
     name: string;
-    img: ISprite;
+    sprites: ISprite;
 }
 
 export interface ISprite {
