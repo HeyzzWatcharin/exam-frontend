@@ -1,0 +1,21 @@
+$palette-map: (
+    primary-gray1: #718096,
+    primary-gray2: #cad5e1,
+    white-smoke: whiteSmoke,
+    gray-1: #fffeff,
+    gray-2: #e2e5eb,
+    red-1: red,
+    green-1: green,
+);
+
+@function getColor($name) {
+    @return map_get($palette-map, $name);
+}
+
+.text-gray-2 {
+    color: getColor(gray-2);
+}
+
+.text-white {
+    color: white;
+}

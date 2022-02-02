@@ -1,0 +1,9 @@
+@import "../../../scss/abstract/colorPalette";
+
+.form-container {
+    width: 100%;
+    max-width: 464px;
+    background: getColor(primary-gray2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}

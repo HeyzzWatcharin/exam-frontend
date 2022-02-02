@@ -1,0 +1,26 @@
+@import "~bootstrap/scss/bootstrap-utilities";
+@import "./abstract/colorPalette";
+@import "./vendor/bootstrap";
+@import "./base/typography";
+@import "./base/font";
+
+body {
+    background-color: getColor(gray-1);
+    font-family: "Prompt", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    margin: 0px;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.text-hover:hover {
+    color: getColor(green-1);
+}
+
+.text-green {
+    color: getColor(green-1);
+}
