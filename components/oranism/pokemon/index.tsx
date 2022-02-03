@@ -41,7 +41,7 @@ const Pokemon = () => {
 
     useEffect(() => {
         fetchingPokemon()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pokemonAllData])
 
     return (
@@ -51,12 +51,14 @@ const Pokemon = () => {
                     pokemonData.map((data, index) => {
                         return (
                             <>
-                                <Col sm={2} key={index}>
-                                    <PokemonFetching
-                                        className={'my-2'}
-                                        name={data.name}
-                                        srcImg={data.sprites.front_default}
-                                    />
+                                <Col xs={6} sm={4} md={3} lg={2} key={index}>
+                                    <div>
+                                        <PokemonFetching
+                                            className={'my-2 d-flex flex-column justify-content-center align-item-center'}
+                                            name={data.name}
+                                            srcImg={data.sprites.front_default}
+                                        />
+                                    </div>
                                 </Col>
                             </>
                         )

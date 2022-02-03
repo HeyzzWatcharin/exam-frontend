@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import { useCallback, useEffect, useState } from 'react'
-import { Col, Container, Navbar, Row } from 'react-bootstrap'
+import { useCallback, useState } from 'react'
+import { Container } from 'react-bootstrap'
 import { IPokemonALLData } from '../interface/pokemon'
 
 import FormValidation from '../components/molecule/exam-validation'
@@ -8,6 +8,7 @@ import CategoryType from '../components/molecule/category/category'
 import Function3 from '../components/molecule/exam-function-3'
 import Function2 from '../components/molecule/exam-function-2'
 import Pokemon from '../components/oranism/pokemon'
+import Function1 from '../components/molecule/exam-function-1'
 
 export enum IOnSelected {
   FORM_TYPE = 1,
@@ -18,7 +19,6 @@ export enum IOnSelected {
 }
 
 const Home: NextPage = () => {
-  const [PokemonData, setPokemon] = useState<IPokemonALLData[]>([]);
   const [onSelected, setOnSelected] = useState<IOnSelected>(0)
 
 
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         return <Pokemon />;
       }
       case (selected = IOnSelected.FUNCTION_ONE_TYPE): {
-        return;
+        return <Function1 />;
       }
       case (selected = IOnSelected.FUNCTION_TWO_TYPE): {
         return <Function2 />;

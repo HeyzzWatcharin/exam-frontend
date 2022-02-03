@@ -1,10 +1,11 @@
 import React from 'react';
+import useTranslation from '../../../hooks/useTranslation';
 import { localMouth } from '../../../interface/date';
 
 const Function2 = () => {
 
+    const { translate } = useTranslation();
     const date = new Date('2020-08-10T14:54:52+07:00');
-
 
     // **********************************************************************
     // **** Note: get date time.
@@ -63,13 +64,13 @@ const Function2 = () => {
                 </p>
 
                 <p className='text-start'>
-                    3.จำนวนวันในเดือนนี้ =  {getDayofMounth()}
+                    3. {translate('TOTAL_DAY')} =  {getDayofMounth()}
                 </p>
                 <p className='text-start'>
-                    4.ไตรมาตรของเดือนนี้ =  {getQuarter(date)}
+                    4.{translate('QUANTER')} =  {getQuarter(date)}
                 </p>
                 <p className='text-start'>
-                    5. Unix timestamp = {unixTimeStamp}
+                    5. {translate('UNIXTIME')} = {unixTimeStamp}
                 </p>
             </div>
         </>

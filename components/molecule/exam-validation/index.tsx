@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form'
 import { Button, Card, Form } from 'react-bootstrap';
+import useTranslation from '../../../hooks/useTranslation';
 
 interface IFormInput {
     firstName: string;
@@ -42,10 +43,12 @@ const FormValidation = () => {
     } = useForm<IFormInput>({
         resolver: yupResolver(schema),
     });
+
+    const { translate } = useTranslation();
     const [error, setError] = useState<string>();
     const [showResult, setShowResult] = useState<boolean>(false);
 
-    const onSubmit = (data: IFormInput) => {
+    const onSubmit = () => {
         const dataForm = getValues();
 
         if (dataForm.password != dataForm.verifyPassword) {
@@ -55,7 +58,6 @@ const FormValidation = () => {
             setError('');
         }
 
-        console.log('Form Data --->', dataForm);
         setShowResult(true)
     }
 
@@ -68,14 +70,14 @@ const FormValidation = () => {
         <Card className={classNames(style["form-container"], 'text-start')}>
             <Card.Body className="pt-5 pb-5 px-3">
                 <Card.Title className="header-1 text-green-1 text-center my-4">
-                    Test Form and Validation
+                    {translate('FORM_HEADE')}
                 </Card.Title>
                 <Card.Text>
                     <Form onSubmit={handleSubmit(onSubmit)} className='px-5'>
 
                         <Form.Group className="mb-3 " controlId="formBasicEmail">
                             <Form.Label>
-                                first Name
+                                {translate('FIRST_NAME')}
                             </Form.Label>
                             <Form.Control
                                 type="text"
@@ -86,13 +88,13 @@ const FormValidation = () => {
                                 isInvalid={!!errors.firstName}
                             />
                             <Form.Control.Feedback type="invalid">
-                                ผิดโว้ย
+                                {translate('ALERT_TEXT')}
                             </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className="mb-3 " controlId="formBasicEmail">
                             <Form.Label>
-                                Last Name
+                                {translate('LAST_NAME')}
                             </Form.Label>
                             <Form.Control
                                 type="text"
@@ -103,13 +105,13 @@ const FormValidation = () => {
                                 isInvalid={!!errors.lastName}
                             />
                             <Form.Control.Feedback type="invalid">
-                                ผิดโว้ย
+                                {translate('ALERT_TEXT')}
                             </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>
-                                E-Mail
+                                {translate('EMAIL')}
                             </Form.Label>
                             <Form.Control
                                 type="email"
@@ -120,13 +122,13 @@ const FormValidation = () => {
                                 isInvalid={!!errors.email}
                             />
                             <Form.Control.Feedback type="invalid">
-                                ผิดโว้ย
+                                {translate('ALERT_TEXT')}
                             </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>
-                                password
+                                {translate('PASSWORD')}
                             </Form.Label>
                             <Form.Control
                                 type="password"
@@ -137,18 +139,18 @@ const FormValidation = () => {
                                 isInvalid={!!errors.password}
                             />
                             <Form.Control.Feedback type="invalid">
-                                ผิดโว้ย
+                                {translate('ALERT_TEXT')}
                             </Form.Control.Feedback>
                             {password != verifyPassword && (
-                                <p className="invalid-password mt-2 text-left">
-                                    password ผิด
+                                <p className="invalid-password mt-2 text-left text-dander">
+                                    {translate('PASSWORD_ERROR')}
                                 </p>
                             )}
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>
-                                Verify  password
+                                {translate('VERIFY_PASSWORD')}
                             </Form.Label>
                             <Form.Control
                                 type="password"
@@ -159,11 +161,11 @@ const FormValidation = () => {
                                 isInvalid={!!errors.verifyPassword}
                             />
                             <Form.Control.Feedback type="invalid">
-                                ผิดโว้ย
+                                {translate('ALERT_TEXT')}
                             </Form.Control.Feedback>
                             {password != verifyPassword && (
-                                <p className="invalid-password mt-2 text-left">
-                                    password ผิด
+                                <p className="invalid-password mt-2 text-left text-dander">
+                                    {translate('PASSWORD_ERROR')}
                                 </p>
                             )}
                         </Form.Group>
@@ -172,7 +174,7 @@ const FormValidation = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>
-                                Gender
+                                {translate('GENDER')}
                             </Form.Label>
                             <Form.Control
                                 as="select"
@@ -182,14 +184,14 @@ const FormValidation = () => {
                                 })}
                                 isInvalid={!!errors.gender}
                             >
-                                <option>กรุณาระบุเพศ</option>
-                                <option value='ชาย'>ชาย</option>
-                                <option value='หญิง'>หญิง</option>
-                                <option value='อื่นๆ'>อื่นๆ</option>
+                                <option></option>
+                                <option value={translate('MALE')}>{translate('MALE')}</option>
+                                <option value={translate('FEMALE')}>{translate('FEMALE')}</option>
+                                <option value={translate('OTHER')}>{translate('OTHER')}</option>
                             </Form.Control>
                             {
                                 !gender && <Form.Control.Feedback type="invalid">
-                                    ผิดโว้ย
+                                    {translate('ALERT_TEXT')}
                                 </Form.Control.Feedback>
                             }
 
@@ -202,7 +204,7 @@ const FormValidation = () => {
                                 type='submit'
                                 disabled={firstName ? false : true}
                             >
-                                Submit
+                                {translate('SUBMIT')}
                             </Button>
                         </div>
 
@@ -215,19 +217,19 @@ const FormValidation = () => {
                 <>
                     <div className='m-5'>
                         <p className='body-7 fw-bold'>
-                            Result:
+                            {translate('RESULT')}:
                         </p>
                         <p>
-                            first Name: {getValues('firstName')}
+                            {translate('FIRST_NAME')} : {getValues('firstName')}
                         </p>
                         <p>
-                            Last Name: {getValues('lastName')}
+                            {translate('LAST_NAME')} : {getValues('lastName')}
                         </p>
                         <p>
-                            Email: {getValues('email')}
+                            {translate('EMAIL')} : {getValues('email')}
                         </p>
                         <p>
-                            Gender: {getValues('gender')}
+                            {translate('GENDER')} : {getValues('gender')}
                         </p>
                     </div>
                 </>

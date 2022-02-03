@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import useTranslation from '../../../hooks/useTranslation';
 import { IOnSelected } from '../../../pages';
 
 interface ICategory {
@@ -12,9 +13,10 @@ const CategoryType: React.FC<ICategory> = ({
 }) => {
 
     const [onSelected, setOnSelected] = useState<IOnSelected>(0)
+    const { translate } = useTranslation();
 
     return (
-        <div>
+        <>
             <Row>
                 <Col
                     className='text-center'
@@ -26,7 +28,7 @@ const CategoryType: React.FC<ICategory> = ({
                         }}
                         className={classNames('fw-bold pointer body-6 text-hover', onSelected == IOnSelected.FORM_TYPE && 'text-green')}
                     >
-                        Home
+                        {translate('HOME')}
                     </p>
                 </Col>
                 <Col
@@ -39,7 +41,7 @@ const CategoryType: React.FC<ICategory> = ({
                         }}
                         className={classNames('fw-bold pointer body-6 text-hover', onSelected == IOnSelected.POKEMON_TYPE && 'text-green')}
                     >
-                        Pokemon
+                        {translate('POKEMON')}
                     </p>
                 </Col>
                 <Col
@@ -53,7 +55,7 @@ const CategoryType: React.FC<ICategory> = ({
                         }}
                         className={classNames('fw-bold pointer body-6 text-hover', onSelected == IOnSelected.FUNCTION_ONE_TYPE && 'text-green')}
                     >
-                        Function 1
+                        {translate('FUCNTION_1')}
                     </p>
                 </Col>
                 <Col
@@ -67,7 +69,7 @@ const CategoryType: React.FC<ICategory> = ({
                         }}
                         className={classNames('fw-bold pointer body-6 text-hover', onSelected == IOnSelected.FUNCTION_TWO_TYPE && 'text-green')}
                     >
-                        Function 2
+                        {translate('FUCNTION_2')}
                     </p>
                 </Col>
                 <Col
@@ -80,11 +82,11 @@ const CategoryType: React.FC<ICategory> = ({
                         }}
                         className={classNames('fw-bold pointer body-6 text-hover', onSelected == IOnSelected.FUNCTION_THREE_TYPE && 'text-green')}
                     >
-                        Function 3
+                        {translate('FUCNTION_3')}
                     </p>
                 </Col>
             </Row>
-        </div>
+        </>
     );
 };
 
